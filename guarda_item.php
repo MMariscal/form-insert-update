@@ -22,6 +22,7 @@
 <html>
 	<head>
 		<title>Guardar item</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<center>

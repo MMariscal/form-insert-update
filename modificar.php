@@ -16,6 +16,7 @@
 <html>
 	<head>
 		<title>ITEMS</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 

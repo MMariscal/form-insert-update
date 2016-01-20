@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Inserción Piezas - Natucer</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 

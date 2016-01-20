@@ -22,6 +22,7 @@
 <html>
 	<head>
 		<title>Modificar ITEM</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 
 	<body>

@@ -10,6 +10,7 @@
 <html>
 	<head>
 		<title>Formulario NATUCER</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 
@@ -18,7 +19,7 @@
 		<a href="nuevo.php">Nuevo registro</a>
 		<p></p>
 
-		<table border=1 width="100%">
+		<table id="registros">
 			<thead>
 				<tr>
 					<td>

@@ -13,6 +13,7 @@
 <html>
 	<head>
 		<title>Eliminar Registro</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 
 	<body>
