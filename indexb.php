@@ -12,6 +12,7 @@
 		<title>Formulario NATUCER</title>
 		<link rel="stylesheet" href="style.css" >
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<script src="node_modules/jquery/dist/jquery.js"></script>
 	</head>
 	<body>
 
@@ -19,6 +20,20 @@
 
 		<a href="nuevo.php">Nuevo registro</a>
 		<p></p>
+
+        <div id="menu">
+            <ol id="lista">
+                <ul>INFORMACIÓN GENERAL</ul>
+                <ul>Series
+                    <ol>
+                        <ul>Curve</ul>
+                        <ul>Minimal</ul>
+                        <ul>Circle</ul>
+                        <ul>Classic</ul>
+                    </ol>
+				</ul>
+            </ol>
+        </div>
 
 		<table id="registros" border="1">
 			<thead>
@@ -90,18 +105,3 @@
 
 
 
-<div id="menu">
-                                <ol id="lista">
-								    <ul>INFORMACIÓN GENERAL</ul>
-								    <ul>Series
-								       <ol>
-								          <ul>Curve</ul>
-								          <ul>Minimal</ul>
-								          <ul>Circle</ul>
-								          <ul>Classic</ul>
-								       </ol>
-								    </ul>
-								    <ul>Galería</ul>
-								    <ul><div class="descarga"><i class="fa fa-arrow-circle-o-down fa-2x"></i> <a href="../../catalogos/pdf/dossier_bancos_natucer.pdf" target="_blank">Download</a></div></ul>
-								</ol>
-                            </div>
