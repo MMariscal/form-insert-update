@@ -6,12 +6,13 @@
     $mensaje_d = '';
     $mensaje_e = '';
     $mensaje_f = '';
+    $pagina= '';
 	/*$query="SELECT * FROM PIEZA";
 
 	$resultado=$mysqli->query($query);*/
 
     $cant_reg = 13;
-    $num_pag = $_GET['pagina'];
+    $num_pag = $_GET["pagina"];
 
     if (!$num_pag){
         $comienzo = 0;
@@ -59,18 +60,18 @@
     }
 
     if(($num_pag-1)>0)
-        $mensaje_b .= "<a href='lista.php?pagina=".($num_pag-1)."'>< Anterior</a>";
+        $mensaje_b .= "<a href='indexc.php?pagina=".($num_pag-1)."'>< Anterior</a>";
 
     for ($i=1; $i<=$total_paginas; $i++){
         if ($num_pag == $i){
             $mensaje_c .= "<b><p class='style1'>Página ".$num_pag."</b>";
         }else{
-            $mensaje_d .= "<a href='lista.php?pagina=$i'> $i </a>";
+            $mensaje_d .= "<a href='indexc.php?pagina=$i'> $i </a>";
         }
     }
 
     if (($num_pag+1)<=$total_paginas)
-        $mensaje_e .= "<a href='lista.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
+        $mensaje_e .= "<a href='indexc.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
 
     $mensaje_f .='
         <br>
