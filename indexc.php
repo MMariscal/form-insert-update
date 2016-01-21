@@ -64,6 +64,15 @@
         }
     }
 
+    if (($num_pag+1)<=$total_paginas)
+        echo "<a href='lista.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
+
+    echo "Número de páginas     = ".$num_pag."<br>";
+    echo "Total páginas         = ".$total_paginas."<br>";
+    echo "Total registros       = ".$total_registros."<br>";
+    echo "Comienzo              = ".$comienzo."<br>";
+    echo "Cantidad de registros = ".$cant_reg."<br>";
+
 ?>
 
 <!DOCTYPE html>
