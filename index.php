@@ -1,128 +1,94 @@
 <?php
-	require('conexion.php');
-    $mensaje = '';
-    $mensaje_b = '';
-    $mensaje_f = '';
-	/*$query="SELECT * FROM PIEZA";
+session_start();
+include_once "connect-data.php";
 
-	$resultado=$mysqli->query($query);*/
+function verificar_login($user,$password,&$result) {
+    $sql = "SELECT * FROM usuarios WHERE usuario = '$user' and password = '$password'";
+    $rec = mysql_query($sql);
+    $count = 0;
 
-    $cant_reg = 11;
-    $num_pag =1;
-    /* UTILIZADO PARA SOLVENTAR EL NOTICE: UNDEFINED VARIABLE */
-    if (isset($_GET["pagina"]))
-        $num_pag = $_GET["pagina"];
-
-    if (!$num_pag){
-        $comienzo = 0;
-        $num_pag = 1;
-    }else{
-        $comienzo = ($num_pag-1)*$cant_reg;
+    while($row = mysql_fetch_object($rec))
+    {
+        $count++;
+        $result = $row;
     }
 
-    $link = mysqli_connect("localhost", "user", "123456", "NTCSerie2");
-
-    $result = mysqli_query($link, "SELECT * FROM PIEZA");
-    $total_registros = mysqli_num_rows($result);
-
-    $result = mysqli_query($link, "SELECT idPIEZA, MODELO, MEDIDAS, USO, SERIE, COLOR, APLICACION, ESTILO,                                      IMAGEN, OTROS FROM PIEZA ORDER BY idPIEZA LIMIT $comienzo, $cant_reg");
-    $total_paginas = ceil($total_registros/$cant_reg);
-
-    while ($row = mysqli_fetch_array($result)){
-        $idPIEZA = $row['idPIEZA'];
-        $modelo =$row['MODELO'];
-        $medidas =$row['MEDIDAS'];
-        $uso =$row['USO'];
-        $serie =$row['SERIE'];
-        $color =$row['COLOR'];
-        $aplicacion =$row['APLICACION'];
-        $estilo =$row['ESTILO'];
-        $imagen =$row['IMAGEN'];
-        $otros =$row['OTROS'];
-
-        $mensaje .='
-            <ul>
-                <li><a class="active" style="width:50px">'.$idPIEZA.'</a></li>
-                <li><a href="#" style="width:250px">'.$modelo.'</a></li>
-                <li><a href="#" style="width:75px">'.$medidas.'</a></li>
-                <li><a href="#" style="width:125px">'.$uso.'</a></li>
-                <li><a href="#" style="width:100px">'.$serie.'</a></li>
-                <li><a href="#" style="width:150px">'.$color.'</a></li>
-                <li><a href="#" style="width:234px">'.$aplicacion.'</a></li>
-                <li><a href="#" style="width:100px">'.$estilo.'</a></li>
-                <li><a href="#" style="width:250px">'.$imagen.'</a></li>
-                <li><a href="#" style="width:48px">'.$otros.'</a></li>
-                <li><a href="modificar.php?idPIEZA='.$idPIEZA.'" style="width:55px">Modificar</a></li>
-                <li><a href="eliminar.php?idPIEZA='.$idPIEZA.'" style="width:55px">Eliminar</a></li>
-            </ul>
-        ';
+    if($count == 1)
+    {
+        return 1;
     }
 
-    if(($num_pag-1)>0)
-        $mensaje_b .= "<a href='indexc.php?pagina=".($num_pag-1)."'>< Anterior</a>";
+    else
+    {
+        return 0;
+    }
+}
 
-    for ($i=1; $i<=$total_paginas; $i++){
-        if ($num_pag == $i){
-            $mensaje_b .= "<p>Página ".$num_pag;
-        }else{
-            $mensaje_b .= "<a href='indexc.php?pagina=$i'> $i </a>";
+if(!isset($_SESSION['userid']))
+{
+    if(isset($_POST['login']))
+    {
+        if(verificar_login($_POST['user'],$_POST['password'],$result) == 1)
+        {
+            $_SESSION['userid'] = $result->idusuario;
+            header("location:index.php");
+        }
+        else
+        {
+            echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>';
         }
     }
-
-    if (($num_pag+1)<=$total_paginas)
-        $mensaje_b .= "<a href='indexc.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
-
-    $mensaje_f .='
-        <br>
-        <p>Número de páginas     = '.$num_pag.'</p>
-        <p>Total páginas         = '.$total_paginas.'</p>
-        <p>Total registros       = '.$total_registros.'
-        <p>Comienzo              = '.$comienzo.'</p>
-        <p>Cantidad de registros = '.$cant_reg.'</p><br>
-        ';
-
 ?>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Formulario NATUCER</title>
-		<link rel="stylesheet" href="style.css" >
-	</head>
-	<body>
+<style type="text/css">
+*{
+	font-size: 14px;
+}
+form.login {
+    background: none repeat scroll 0 0 #F1F1F1;
+    border: 1px solid #DDDDDD;
+    font-family: sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    width: 278px;
+}
+form.login div {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+form.login div label {
+    display: block;
+    float: left;
+    line-height: 25px;
+}
+form.login div input[type="text"], form.login div input[type="password"] {
+    border: 1px solid #DCDCDC;
+    float: right;
+    padding: 4px;
+}
+form.login div input[type="submit"] {
+    background: none repeat scroll 0 0 #DEDEDE;
+    border: 1px solid #C6C6C6;
+    float: right;
+    font-weight: bold;
+    padding: 4px 20px;
+}
+.error{
+    color: red;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+}
+</style>
 
-		<center><h1>LISTADO PIEZAS NATUCER</h1></center>
-
-		<form method="post" action="nuevo.php">
-            <button type="submit">Nuevo Registro</button>
-        </form>
-		<p></p>
-
-        <ul>
-            <li><a class="active" style="width:50px">idPIEZA</a></li>
-            <li><a href="#" style="width:250px">MODELO</a></li>
-            <li><a href="#" style="width:75px">MEDIDAS</a></li>
-            <li><a href="#"style="width:125px">USO</a></li>
-            <li><a href="#"style="width:100px">SERIE</a></li>
-            <li><a href="#"style="width:150px">COLOR</a></li>
-            <li><a href="#"style="width:234px">APLICACION</a></li>
-            <li><a href="#"style="width:100px">ESTILO</a></li>
-            <li><a href="#"style="width:250px">IMAGEN</a></li>
-            <li><a href="#"style="width:48px">OTROS</a></li>
-            <li><a href="#"style="width:55px">MOD.</a></li>
-            <li><a href="#"style="width:55px">DEL.</a></li>
-        </ul>
-        <div id="paginacion">
-            <?php
-                echo $mensaje;
-                echo $mensaje_b;
-            ?>
-        </div>
-        <div id="mensajes">
-            <?php
-                echo $mensaje_f;
-            ?>
-        </div>
-
-    </body>
-</html>
+<form action="" method="post" class="login">
+	<div><label>Username</label><input name="user" type="text" ></div>
+	<div><label>Password</label><input name="password" type="password"></div>
+	<div><input name="login" type="submit" value="login"></div>
+</form>
+<?php
+} else {
+	echo 'Su usuario ingreso correctamente.';
+	echo '<a href="logout.php">Logout</a>';
+}
+?>
