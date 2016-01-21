@@ -1,6 +1,11 @@
 <?php
 	require('conexion.php');
     $mensaje = '';
+    $mensaje_b = '';
+    $mensaje_c = '';
+    $mensaje_d = '';
+    $mensaje_e = '';
+    $mensaje_f = '';
 	/*$query="SELECT * FROM PIEZA";
 
 	$resultado=$mysqli->query($query);*/
@@ -54,24 +59,27 @@
     }
 
     if(($num_pag-1)>0)
-        echo "<a href='lista.php?pagina=".($num_pag-1)."'>< Anterior</a>";
+        $mensaje_b .= "<a href='lista.php?pagina=".($num_pag-1)."'>< Anterior</a>";
 
     for ($i=1; $i<=$total_paginas; $i++){
         if ($num_pag == $i){
-            echo "<b><p class='style1'>Página ".$num_pag."</b>";
+            $mensaje_c .= "<b><p class='style1'>Página ".$num_pag."</b>";
         }else{
-            echo "<a href='lista.php?pagina=$i'> $i </a>";
+            $mensaje_d .= "<a href='lista.php?pagina=$i'> $i </a>";
         }
     }
 
     if (($num_pag+1)<=$total_paginas)
-        echo "<a href='lista.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
+        $mensaje_e .= "<a href='lista.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
 
-    echo "Número de páginas     = ".$num_pag."<br>";
-    echo "Total páginas         = ".$total_paginas."<br>";
-    echo "Total registros       = ".$total_registros."<br>";
-    echo "Comienzo              = ".$comienzo."<br>";
-    echo "Cantidad de registros = ".$cant_reg."<br>";
+    $mensaje_f .='
+        <br>
+        <p>Número de páginas     = '.$num_pag.'</p>
+        <p>Total páginas         = '.$total_paginas.'</p>
+        <p>Total registros       = '.$total_registros.'
+        <p>Comienzo              = '.$comienzo.'</p>
+        <p>Cantidad de registros = '.$cant_reg.'</p><br>
+        ';
 
 ?>
 
@@ -104,6 +112,20 @@
             <li><a href="#"style="width:55px">MOD.</a></li>
             <li><a href="#"style="width:55px">DEL.</a></li>
         </ul>
-        <?php echo $mensaje; ?>
+        <div id="paginacion">
+            <?php
+                echo $mensaje;
+                echo $mensaje_b;
+                echo $mensaje_c;
+                echo $mensaje_d;
+                echo $mensaje_e;
+            ?>
+        </div>
+        <div id="mensajes">
+            <?php
+                echo $mensaje_f;
+            ?>
+        </div>
+
     </body>
 </html>
