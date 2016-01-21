@@ -53,6 +53,17 @@
         ';
     }
 
+    if(($num_pag-1)>0)
+        echo "<a href='lista.php?pagina=".($num_pag-1)."'>< Anterior</a>";
+
+    for ($i=1; $i<=$total_paginas; $i++){
+        if ($num_pag == $i){
+            echo "<b><p class='style1'>Página ".$num_pag."</b>";
+        }else{
+            echo "<a href='lista.php?pagina=$i'> $i </a>";
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
