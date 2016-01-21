@@ -21,18 +21,58 @@
 		<a href="nuevo.php">Nuevo registro</a>
 		<p></p>
 
+            <!--<nav class="top_menu">
+                <ul>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </nav>-->
+
+
+
         <div id="menu">
-            <ol id="lista">
-                <ul>INFORMACIÓN GENERAL</ul>
-                <ul>Series
+            <ol class="lista">
+                <ul>idPIEZA</ul>
+                <ul>MODELO</ul>
+                <ul>MEDIDAS</ul>
+                <ul>USO</ul>
+                <ul>SERIE</ul>
+                <ul>COLOR</ul>
+                <ul>APLICACION</ul>
+                <ul>ESTILO</ul>
+                <ul>IMAGEN</ul>
+                <ul>OTROS</ul>
+                <ul>MODIFICAR</ul>
+                <ul>ELIMINAR</ul>
+                <!--<ul>
                     <ol>
                         <ul>Curve</ul>
                         <ul>Minimal</ul>
                         <ul>Circle</ul>
                         <ul>Classic</ul>
                     </ol>
-				</ul>
+				</ul>-->
             </ol>
+            <?php while($row=$resultado->fetch_assoc()){ ?>
+                <ol class="lista">
+                    <ul><?php echo $row['idPIEZA'];?></ul>
+					<ul><?php echo $row['MODELO'];?></ul>
+					<ul><?php echo $row['MEDIDAS'];?></ul>
+					<ul><?php echo $row['USO'];?></ul>
+                    <ul><?php echo $row['SERIE'];?></ul>
+					<ul><?php echo $row['COLOR'];?></ul>
+					<ul><?php echo $row['APLICACION'];?></ul>
+					<ul><?php echo $row['ESTILO'];?></ul>
+					<ul><?php echo $row['IMAGEN'];?></ul>
+					<ul><?php echo $row['OTROS'];?></ul>
+					<ul><a href="modificar.php?idPIEZA=<?php echo $row['idPIEZA'];?>">Modificar</a></ul>
+				    <ul><a href="eliminar.php?idPIEZA=<?php echo $row['idPIEZA'];?>">Eliminar</a></ul>
+				</ol>
+            	<?php } ?>
         </div>
 
 		<table id="registros" border="1">
