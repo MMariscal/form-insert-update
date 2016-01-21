@@ -3,13 +3,15 @@
     $mensaje = '';
     $mensaje_b = '';
     $mensaje_f = '';
-    $pagina= '';
 	/*$query="SELECT * FROM PIEZA";
 
 	$resultado=$mysqli->query($query);*/
 
     $cant_reg = 11;
-    $num_pag = $_GET["pagina"];
+    $num_pag =1;
+    /* UTILIZADO PARA SOLVENTAR EL NOTICE: UNDEFINED VARIABLE */
+    if (isset($_GET["pagina"]))
+        $num_pag = $_GET["pagina"];
 
     if (!$num_pag){
         $comienzo = 0;
@@ -61,7 +63,7 @@
 
     for ($i=1; $i<=$total_paginas; $i++){
         if ($num_pag == $i){
-            $mensaje_b .= "<p class='style1'>Página ".$num_pag;
+            $mensaje_b .= "<p>Página ".$num_pag;
         }else{
             $mensaje_b .= "<a href='indexc.php?pagina=$i'> $i </a>";
         }
