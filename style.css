@@ -1,184 +1,35 @@
-#registros{
-    border-style: groove !important;
+/* ESTILOS CSS PARA FORMULARIO DE INSERCIÓN */
+/* Marcos Mariscal 2016 */
 
-}
-
-/* AÑADIDO POR MARCOS 18/12/15 */
-
-#menu{
-	width: auto;
-	font-size: 13px;
-	line-height: 133%;
-	display: inline-block;
-	visibility: visible;
-	padding-left: 10px;
-}
-
-.lista {
-
-    counter-reset: li;
-    list-style: none;
-    *list-style: decimal;
-    font: 15px 'trebuchet MS', 'lucida sans';
+ul {
+    list-style-type: none;
+    margin: 0;
     padding: 0;
-    margin-bottom: 4em;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    overflow: hidden;
+    background-color: #333;
 }
 
-.lista ol {
-    width: 100px;
-    margin: 0 0 0 2em;
+li {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
     text-align: center;
-}
-
-.lista ul{
-    width: 100px;
-   	position: relative;
-    display: inline;
-    padding: .4em .4em .4em 2em;
-    *padding: .4em;
-    margin: .2em 0;
-    background: #ddd;
-    color: #444;
+    padding: 14px 16px;
     text-decoration: none;
-    border-radius: .3em;
-    text-align: center;
-    /* transition: all .3s ease-out; */
 }
 
-.lista ul:hover{
-    background: #eee;
-}
-/* DATOS PERTENECIENTES A LA ANTIGUA LISTA NUMERADA */
-/*
-EL ELEMENTO LISTA ORIGINAL ERA LISTA LI (MENOS EL PRIMERO QUE SIGUE SIENDO LISTA OL)
- */
-
-/*
-#lista li:hover:before{
-    transform: rotate(360deg); ROTACIÓN
+li a:hover:not(.active) {
+    background-color: #111;
 }
 
-#lista li:before{
-    content: counter(li);
-    counter-increment: li;
-    position: absolute;
-    left: -1.3em;
-    top: 50%;
-    margin-top: -1.3em;
-    background: #87ceeb;
-    height: 2em;
-    width: 2em;
-    line-height: 2em;
-    border: .3em solid #fff;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 2em;
-    transition: all .3s ease-out;
-}
-*/
-
-/* CSS PARA LISTA 21/01/16 */
-/*Body*/
-body
-{
-	margin:0px;
-	padding-top:5px;
-}
-
-#main_container
-{
-	width:90%;
-	margin-left:5%;
-	padding-top:5px;
-	padding-bottom:5px;
-	float:left;
-	border: 3px outset;
-}
-
-/*Content*/
-
-.content{
-	width:90%;
-	margin-top:5px;
-	margin-left:5%;
-	padding-bottom:50px;
-	background:#ffffff;
-	border: 1px dashed;
-	height: auto;
-	float:left;
-}
-
-.content article
-{
-	padding: 3%;
-
-}
-
-.content article h2
-{
-
-}
-
-/*Header*/
-
-.header
-{
-	width:90%;
-	margin-top:5px;
-	margin-left:5%;
-	background:#ffffff;
-	border: 3px outset;
-	height: 200px;
-	float:left;
-}
-
-/*Menu */
-.top_menu ul
-{
-	list-style:none;
-	float:left;
-	border: 1px dashed;
-	padding: 2%;
-	width:95%;
-}
-
-.top_menu ul li
-{
-	float:left;
-	margin-right:20px;
-	margin-bottom:10px;
-	background: #ff812d;
-	padding:5px;
-	border-radius: 15%;
-}
-.top_menu ul li a
-{
-	color: #FFFFFF;
-	text-decoration:none;
-}
-.top_menu ul li a:hover
-{
-	color: blue;
-}
-
-/*Footer*/
-.footer
-{
-	width:90%;
-	margin-top:5px;
-	margin-left:5%;
-	background:#ffffff;
-	border: 3px outset;
-	height: 110px;
-	float:left;
-}
-
-.footer_msg
-{
-	margin-top: 40px;
-float: left;
-margin-left: 5%;
-font-size: 0.8em;
-color: rgb(126, 126, 126);
+.active {
+    background-color: #4CAF50;
 }
