@@ -2,16 +2,13 @@
 	require('conexion.php');
     $mensaje = '';
     $mensaje_b = '';
-    $mensaje_c = '';
-    $mensaje_d = '';
-    $mensaje_e = '';
     $mensaje_f = '';
     $pagina= '';
 	/*$query="SELECT * FROM PIEZA";
 
 	$resultado=$mysqli->query($query);*/
 
-    $cant_reg = 13;
+    $cant_reg = 11;
     $num_pag = $_GET["pagina"];
 
     if (!$num_pag){
@@ -64,14 +61,14 @@
 
     for ($i=1; $i<=$total_paginas; $i++){
         if ($num_pag == $i){
-            $mensaje_c .= "<b><p class='style1'>Página ".$num_pag."</b>";
+            $mensaje_b .= "<p class='style1'>Página ".$num_pag;
         }else{
-            $mensaje_d .= "<a href='indexc.php?pagina=$i'> $i </a>";
+            $mensaje_b .= "<a href='indexc.php?pagina=$i'> $i </a>";
         }
     }
 
     if (($num_pag+1)<=$total_paginas)
-        $mensaje_e .= "<a href='indexc.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
+        $mensaje_b .= "<a href='indexc.php?pagina=".($num_pag+1)."'>Siguiente ></a>";
 
     $mensaje_f .='
         <br>
@@ -89,14 +86,14 @@
 	<head>
 		<title>Formulario NATUCER</title>
 		<link rel="stylesheet" href="style.css" >
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<script src="node_modules/jquery/dist/jquery.js"></script>
 	</head>
 	<body>
 
 		<center><h1>LISTADO PIEZAS NATUCER</h1></center>
 
-		<a href="nuevo.php">Nuevo registro</a>
+		<form method="post" action="nuevo.php">
+            <button type="submit">Nuevo Registro</button>
+        </form>
 		<p></p>
 
         <ul>
@@ -117,9 +114,6 @@
             <?php
                 echo $mensaje;
                 echo $mensaje_b;
-                echo $mensaje_c;
-                echo $mensaje_d;
-                echo $mensaje_e;
             ?>
         </div>
         <div id="mensajes">
