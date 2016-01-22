@@ -3,11 +3,11 @@ session_start();
 include_once "connect-data.php";
 
 function verificar_login($user,$password,&$result) {
-    $sql = "SELECT * FROM usuarios WHERE usuario = '$user' and password = '$password'";
-    $rec = mysql_query($sql);
+    $query = "SELECT * FROM usuarios WHERE usuario = '$user' and password = '$password'";
+    $resultado = $mysqli->query($query);
     $count = 0;
 
-    while($row = mysql_fetch_object($rec))
+    while($row = $resultado -> fetch_object())
     {
         $count++;
         $result = $row;
