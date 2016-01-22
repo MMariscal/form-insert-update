@@ -5,7 +5,7 @@
     define('DB_USER','user');
     define('DB_PASS','123456');
 
-    $mysqli = new mysqli (DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    $GLOBALS["mysqli"] = new mysqli (DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
     if ($mysqli->connect_errno){
             echo "Fallo al conectar a MySQL: (".$mysqli->connect_errno.")".$mysqli->connect_error;

@@ -1,12 +1,18 @@
 <?php
 session_start();
-include_once "connect-data.php";
+//include "connect-data.php";
+define('DB_SERVER','localhost');
+    define('DB_NAME','NTCSerie22');
+    define('DB_USER','user');
+    define('DB_PASS','123456');
+
+    $GLOBALS["mysqli"] = new mysqli (DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 function verificar_login($user,$password,&$result) {
     $query = "SELECT * FROM usuarios WHERE usuario = '$user' and password = '$password'";
-    $resultado = $mysqli->query($query);
+    $resultado = $GLOBALS["mysqli"]->query($query);
     $count = 0;
-
+    var_dump($resultado);
     while($row = $resultado -> fetch_object())
     {
         $count++;
